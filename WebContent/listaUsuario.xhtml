@@ -3,42 +3,41 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui" >
 
 <h:head></h:head>
 <body>
-
 <h1>Lista de Usuarios</h1>
 <h:form>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>NOME</th>
-				<th>EMAIL</th>
-				<th>SENHA</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="usu" items="#{usuarioListaBean.usuario}">
-				<tr>
-					<td>${usu.id}</td>
-					<td>${usu.nome}</td>
-					<td>${usu.email}</td>
-					<td>${usu.senha}</td>
-					<td> <h:commandButton action="#{usuarioEditaBean.editar(usu)}" value="Editar" /> </td>
-					<td> <h:commandButton action="#{usuarioRemoveBean.remover(usu.id)}" value="Remover" /> </td>
-					<td> <h:commandButton action="#{telefoneCadastraBean.paginaTelefone(usu)}" value="Cadastrar Telefone" /> </td>
-				</tr>
-			</c:forEach>
-			
-		</tbody>
-	</table>
-	<h:commandButton action="#{telefoneListaBean.paginaListar()}" value="Lista de Telefones" />
-	<h:commandButton action="#{usuarioListaBean.paginaCadastrar()}" value="Novo Usuario" />
-	
+	<p:dataTable var="usu" value="#{usuarioListaBean.usuario}">
+	    <p:column headerText="Id">
+	        <h:outputText value="${usu.id}" />
+	    </p:column>
+	 
+	    <p:column headerText="NOME">
+	        <h:outputText value="${usu.nome}" />
+	    </p:column>
+	 
+	    <p:column headerText="EMAIL">
+	        <h:outputText value="${usu.email}" />
+	    </p:column>
+	 
+	    <p:column headerText="SENHA">
+	        <h:outputText value="${usu.senha}" />
+	    </p:column>
+	    
+	     <p:column headerText="OPÇÕES">
+	        <h:commandButton action="#{usuarioEditaBean.editar(usu)}" value="Editar" />  
+			<h:commandButton action="#{usuarioRemoveBean.remover(usu.id)}" value="Remover" /> 
+			<h:commandButton action="#{telefoneCadastraBean.paginaTelefone(usu)}" value="Cadastrar Telefone" /> 
+	    </p:column>
+	</p:dataTable>
+	<p:commandButton value="Lista de Telefones" action="#{telefoneListaBean.paginaListar()}" 
+        		style="margin-right:20px;" ajax="false" />
+     <p:commandButton value="Novo Usuario" action="#{usuarioListaBean.paginaCadastrar()}" 
+        		style="margin-right:20px;" ajax="false" />
 </h:form>
-	
 	
 </body>
 </html>

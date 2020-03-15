@@ -12,6 +12,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/bozof/OneDrive/Desktop/workspace/IviaTeste/WebContent/WEB-INF/lib/primefaces-7.0.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.jboss.ide.eclipse.as.core.server.runtime.runtimeTarget/WildFly 18.0 Runtime">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>

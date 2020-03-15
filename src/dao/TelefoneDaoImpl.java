@@ -90,7 +90,7 @@ public class TelefoneDaoImpl implements TelefoneDao{
 			fones.setNumero(rs.getString("numero"));
 			fones.setTipo(rs.getString("tipo"));
 			usu.setId(rs.getInt("id_usuario"));
-			fones.setUsu(usu);  
+			fones.setUsu(usu);
 			listTelefone.add(fones);
 		}
 		

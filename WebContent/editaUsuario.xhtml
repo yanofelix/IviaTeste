@@ -2,30 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
 <body> 
 
 <h1>EDITANDO USUARIO</h1>
 	<h:messages style="color:red" />
+	
 	<h:form>
-		ID: <h:outputLabel value="#{usuarioEditaBean.usu.id}" /> <br/>
-		<h:outputLabel for="nome" value="Nome" />
-		<h:inputText id="nome" value="#{usuarioEditaBean.usu.nome}" 
-			required="true" requiredMessage="Insira Nome"  /> <br/>
-			
-		<h:outputLabel for="email" value="Email" />
-		<h:inputText id="email" value="#{usuarioEditaBean.usu.email}" 
-			required="true" requiredMessage="Insira o email"/> <br/>
-			
-		<h:outputLabel for="senha" value="Senha" />
-		<h:inputSecret id="senha" value="#{usuarioEditaBean.usu.senha}" 
-			required="true" requiredMessage="Insira a senha"/> <br/>
+		<h4>ID: <h:outputLabel value="#{usuarioEditaBean.usu.id}"  /> <br/></h4>
 		
-		<h:commandButton action="#{usuarioEditaBean.cadastrar()}" value="Editar" />
-		<h:commandButton action="#{usuarioListaBean.paginaListar()}" value="Voltar" />
+		 <h4>Nome:</h4>
+    	<p:inputText  id="nome" value="#{usuarioEditaBean.usu.nome}" required="true"
+			 requiredMessage="Insira o Nome"/> <br/>
+			 
+		 <h4>Email:</h4>
+    	<p:inputText  id="email" value="#{usuarioEditaBean.usu.email}" required="true"
+			 requiredMessage="Insira o Email"/> <br/> <br/>
+		
+		<h4>Senha:</h4>
+		<p:password  id="senha" value="#{usuarioEditaBean.usu.senha}" feedback="true" required="true"
+			 requiredMessage="Insira a Senha"/> <br/> <br/>
+		
+        <p:commandButton value="Editar" id="btEditaUsu" action="#{usuarioEditaBean.cadastrar()}" 
+        		style="margin-right:20px;" ajax="false" />
+ 
 	</h:form>
+	<h:form>
+	<p:commandButton value="Voltar" id="voltarUsuLista" action="#{usuarioListaBean.paginaListar()}" 
+        		style="margin-right:20px;" ajax="false" />
+	</h:form>
+	
 
 </body> 
 </html>

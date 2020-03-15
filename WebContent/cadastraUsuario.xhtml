@@ -2,29 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
 <body> 
 
 <h1>CADASTRO DE USUARIOS</h1>
-	<h:messages style="color:red" />
-	<h:form>
-		<h:outputLabel for="nome" value="Nome" />
-		<h:inputText id="nome" value="#{usuarioCadastraBean.usu.nome}" required="true"
-													requiredMessage="Insira o Nome" /> <br/>
-		<h:outputLabel for="email" value="Email" />
-		<h:inputText id="email" value="#{usuarioCadastraBean.usu.email}" required="true"
-													requiredMessage="Insira o Email"/> <br/>
-		<h:outputLabel for="senha" value="Senha" />
-		<h:inputSecret id="senha" value="#{usuarioCadastraBean.usu.senha}" required="true"
-													requiredMessage="Insira a Senha"/> <br/>
+<h:messages style="color:red" />
+<h:form>
 		
-		<h:commandButton action="#{usuarioCadastraBean.cadastrar()}" value="Enviar" />
+		 <h4>Nome:</h4>
+    	<p:inputText  id="nome" value="#{usuarioCadastraBean.usu.nome}" required="true"
+			 requiredMessage="Insira o Nome" placeholder="Nome"/> <br/>
+			 
+		 <h4>Email:</h4>
+    	<p:inputText  id="email" value="#{usuarioCadastraBean.usu.email}" required="true"
+			 requiredMessage="Insira o Email" placeholder="Email"/> <br/> <br/>
+			 
+		 <h4>Senha:</h4>
+		<p:password  id="senha" value="#{usuarioCadastraBean.usu.senha}" feedback="true" required="true"
+			 requiredMessage="Insira a Senha" placeholder="Senha"/> <br/> <br/>
 		
+        
+        <p:commandButton value="Enviar" id="btCadastrarUsu" action="#{usuarioCadastraBean.cadastrar()}" 
+        		style="margin-right:20px;" ajax="false" />
+ 
 	</h:form>
 	<h:form>
-	<h:commandButton action="#{usuarioListaBean.paginaListar()}" value="Voltar" />
+	<p:commandButton value="Voltar" id="voltarTelLista" action="#{usuarioListaBean.paginaListar()}" 
+        		style="margin-right:20px;" ajax="false" />
 	</h:form>
 
 </body> 

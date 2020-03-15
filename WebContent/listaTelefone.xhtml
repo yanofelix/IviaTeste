@@ -3,42 +3,44 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui" > 
 
 <h:head></h:head> 
 <body> 
-
 <h1>Lista de Telefones</h1>
+
 <h:form>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>DDD</th>
-				<th>NUMERO</th>
-				<th>TIPO</th>
-				<th>USUARIO</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="tel" items="#{telefoneListaBean.fone}">
-				<tr>
-					<td>${tel.id}</td>
-					<td>${tel.ddd}</td>
-					<td>${tel.numero}</td>
-					<td>${tel.tipo}</td>
-					<td>${tel.usu.id}</td>
-					<td> <h:commandButton action="#{telefoneEditaBean.editar(tel)}" value="Editar" /> </td>
-					<td> <h:commandButton action="#{telefoneRemoveBean.remover(tel.id)}" value="Remover" /> </td>
-					
-				</tr>
-			</c:forEach>
-			
-		</tbody>
-	</table>
-	<h:commandButton action="#{telefoneListaBean.paginaListarUsuario()}" value="Voltar" />
-	
+	<p:dataTable var="tel" value="#{telefoneListaBean.fone}">
+	    <p:column headerText="Id">
+	        <h:outputText value="${tel.id}" />
+	    </p:column>
+	 
+	    <p:column headerText="DDD">
+	        <h:outputText value="${tel.ddd}" />
+	    </p:column>
+	 
+	    <p:column headerText="NUMERO">
+	        <h:outputText value="${tel.numero}" />
+	    </p:column>
+	 
+	    <p:column headerText="TIPO">
+	        <h:outputText value="${tel.tipo}" />
+	    </p:column>
+	    
+	    <p:column headerText="USUARIO">
+	        <h:outputText value="${tel.usu.id}" />
+	    </p:column>
+	    
+	     <p:column headerText="OPÇÕES">
+	        <h:commandButton action="#{telefoneEditaBean.editar(tel)}" value="Editar" />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:commandButton action="#{telefoneRemoveBean.remover(tel.id)}" value="Remover" /> 
+	    </p:column>
+	</p:dataTable>
+	<p:commandButton value="Voltar" action="#{telefoneListaBean.paginaListarUsuario()}" 
+        		style="margin-right:20px;" ajax="false" />
 </h:form>
+
 
 </body> 
 </html>

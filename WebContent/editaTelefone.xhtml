@@ -2,28 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
 <body> 
 
 <h1>EDITANDO TELEFONES</h1>
 	<h:messages style="color:red" />
+	
 	<h:form>
-		USUARIO: <h:outputLabel value="#{telefoneEditaBean.telefone.usu.nome}"  /> <br/>
-		<h:outputLabel for="ddd" value="DDD" />
-		<h:inputText id="ddd" value="#{telefoneEditaBean.telefone.ddd}" /> <br/>
-		<h:outputLabel for="numero" value="Numero" />
-		<h:inputText id="numero" value="#{telefoneEditaBean.telefone.numero}" /> <br/>
-		<h:selectOneMenu value="#{telefoneEditaBean.telefone.tipo}"
-											required="true" requiredMessage="Insira o tipo">
-											<f:selectItem itemLabel="Selecionar" itemValue="" />
-											<f:selectItem itemValue="fixo" itemLabel="Fixo" />
-											<f:selectItem itemValue="celular" itemLabel="Celular" />
-											<f:selectItem itemValue="empresarial" itemLabel="Empresarial" />	
-										</h:selectOneMenu> <br/>
-		<h:commandButton action="#{telefoneEditaBean.cadastrar()}" value="Enviar" />
+		<h4>ID DO USUARIO: <h:outputLabel value="#{telefoneEditaBean.telefone.usu.id}"  /> <br/></h4>
+		
+		 <h4>DDD:</h4>
+    	<p:inputText id="ddd" value="#{telefoneEditaBean.telefone.ddd}" required="true"
+			 requiredMessage="Insira o DDD"/> <br/>
+		 	<p:keyFilter for="ddd" mask="num"/>
+			 
+		 <h4>Numero:</h4>
+    	<p:inputText id="numero" value="#{telefoneEditaBean.telefone.numero}" required="true"
+			 requiredMessage="Insira o Numero"/> <br/> <br/>
+			 <p:keyFilter for="numero" mask="num"/>
+		
+		<p:selectOneMenu id="tipo" value="#{telefoneEditaBean.telefone.tipo}" style="width:125px" 
+				required="true" requiredMessage="Insira o tipo">
+            <f:selectItem itemLabel="Selecionar" itemValue="" />
+			<f:selectItem itemValue="fixo" itemLabel="Fixo" />
+			<f:selectItem itemValue="celular" itemLabel="Celular" />
+			<f:selectItem itemValue="empresarial" itemLabel="Empresarial" />	
+        </p:selectOneMenu> <br/> <br/>
+        
+        <p:commandButton value="Enviar" id="btCadastrarTel" action="#{telefoneEditaBean.cadastrar()}" 
+        		style="margin-right:20px;" ajax="false" />
+ 
 	</h:form>
-
+	<h:form>
+	<p:commandButton value="Voltar" id="voltarUsuLista" action="#{telefoneListaBean.paginaListar()}" 
+        		style="margin-right:20px;" ajax="false" />
+	</h:form>
+	
 </body> 
 </html>
