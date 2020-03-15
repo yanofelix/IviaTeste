@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+<h1>EDITANDO TELEFONES</h1>
+	<h:messages style="color:red" />
+	<h:form>
+		USUARIO: <h:outputLabel value="#{telefoneEditaBean.telefone.usu.nome}"  /> <br/>
+		<h:outputLabel for="ddd" value="DDD" />
+		<h:inputText id="ddd" value="#{telefoneEditaBean.telefone.ddd}" /> <br/>
+		<h:outputLabel for="numero" value="Numero" />
+		<h:inputText id="numero" value="#{telefoneEditaBean.telefone.numero}" /> <br/>
+		<h:selectOneMenu value="#{telefoneEditaBean.telefone.tipo}"
+											required="true" requiredMessage="Insira o tipo">
+											<f:selectItem itemLabel="Selecionar" itemValue="" />
+											<f:selectItem itemValue="fixo" itemLabel="Fixo" />
+											<f:selectItem itemValue="celular" itemLabel="Celular" />
+											<f:selectItem itemValue="empresarial" itemLabel="Empresarial" />	
+										</h:selectOneMenu> <br/>
+		<h:commandButton action="#{telefoneEditaBean.cadastrar()}" value="Enviar" />
+	</h:form>
+
+</body> 
+</html>

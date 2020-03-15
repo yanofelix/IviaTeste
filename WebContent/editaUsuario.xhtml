@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+<h1>EDITANDO USUARIO</h1>
+	<h:messages style="color:red" />
+	<h:form>
+		ID: <h:outputLabel value="#{usuarioEditaBean.usu.id}" /> <br/>
+		<h:outputLabel for="nome" value="Nome" />
+		<h:inputText id="nome" value="#{usuarioEditaBean.usu.nome}" 
+			required="true" requiredMessage="Insira Nome"  /> <br/>
+			
+		<h:outputLabel for="email" value="Email" />
+		<h:inputText id="email" value="#{usuarioEditaBean.usu.email}" 
+			required="true" requiredMessage="Insira o email"/> <br/>
+			
+		<h:outputLabel for="senha" value="Senha" />
+		<h:inputSecret id="senha" value="#{usuarioEditaBean.usu.senha}" 
+			required="true" requiredMessage="Insira a senha"/> <br/>
+		
+		<h:commandButton action="#{usuarioEditaBean.cadastrar()}" value="Editar" />
+		<h:commandButton action="#{usuarioListaBean.paginaListar()}" value="Voltar" />
+	</h:form>
+
+</body> 
+</html>
